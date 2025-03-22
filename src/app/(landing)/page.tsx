@@ -1,45 +1,21 @@
-"use client";
-
-import React, { useState, useEffect } from "react";
-import { useRouter } from "next/navigation"; // Hook para redirección
-import logo from "@/public/assets/logo_stkhome.png"; // Importamos la imagen directamente
-
-const HomePage: React.FC = () => {
-  const [showSplash, setShowSplash] = useState(true);
-  const [fadeOut, setFadeOut] = useState(false);
-  const router = useRouter(); // Para manejar navegación programática
-
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setFadeOut(true); // Activa el desvanecimiento
-      setTimeout(() => {
-        setShowSplash(false); // Oculta el splash después del desvanecimiento
-        router.push("/pages/home"); // Cambia aquí la ruta
-      }, 1000); // Espera 1 segundo antes de redirigir
-    }, 2000); // Muestra el splash por 2 segundos
-
-    return () => clearTimeout(timer); // Limpia el temporizador
-  }, [router]);
-
-  return (
-    <div className="w-full h-screen flex items-center justify-center bg-white">
-      {showSplash && (
-        <div
-          className={`flex flex-col items-center justify-center w-full h-full transition-opacity duration-1000 ${
-            fadeOut ? "opacity-0" : "opacity-100"
-          }`}
-        >
-          {/* Logo con animación de desvanecimiento */}
-          <img
-            src={logo.src} // Usamos la imagen importada directamente
-            alt="STK-Homes Logo"
-            className="max-w-[50%] h-auto mx-auto" // Centra la imagen y la reduce al 50%
-            style={{ display: "block" }} // Asegura que la imagen sea un bloque para centrarla
-          />
-        </div>
-      )}
-    </div>
-  );
+// src/app/(landing)/page.tsz
+export const metadata = {
+  title: "STK | Reparación y Software",
+  description: "Expertos en reparación de equipos, redes y desarrollo de software en Colima.",
 };
 
-export default HomePage;
+export default function HomePage() {
+  return (
+    <section className="flex flex-col items-center justify-center text-center py-20">
+      <h1 className="text-4xl font-bold mb-4">Bienvenido a GB</h1>
+      <p className="text-lg text-gray-600 max-w-2xl">
+        Somos expertos en reparación de equipos, infraestructura de redes y desarrollo de software.
+        Ofrecemos soluciones personalizadas para empresas y particulares.
+        // En cualquier archivo .tsx
+
+
+      </p>
+      <div className="bg-red-500 text-white p-4">Esto debería verse con fondo rojo</div>
+    </section>
+  );
+}
