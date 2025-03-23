@@ -1,7 +1,10 @@
 // src/app/(landing)/page.tsz
 export const metadata = {
-  title: "STK | Reparación y Software",
+  title: "GB reparación de equipos de computo, redes y desarrollo de software",
   description: "Expertos en reparación de equipos, redes y desarrollo de software en Colima.",
+  icons: {
+    icon: "/favicon.ico", // ✅ si está en `src/app/favicon.ico`
+  },
 };
 
 export default function HomePage() {
