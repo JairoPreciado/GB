@@ -13,10 +13,7 @@ export default function HomePage() {
       <h1 className="text-4xl font-bold mb-4">Bienvenido a GB</h1>
       <p className="text-lg text-gray-600 max-w-2xl">
         Somos expertos en reparación de equipos, infraestructura de redes y desarrollo de software.
-        Ofrecemos soluciones personalizadas para empresas y particulares.
-        // En cualquier archivo .tsx
-
-
+        Ofrecemos soluciones personalizadas para empresas y particulares.En cualquier archivo .tsx
       </p>
       <div className="bg-red-500 text-white p-4">Esto debería verse con fondo rojo</div>
     </section>
