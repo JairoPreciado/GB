@@ -1,21 +1,78 @@
-// src/app/(landing)/page.tsz
+// src/app/(landing)/page.tsx
 export const metadata = {
   title: "GB reparación de equipos de computo, redes y desarrollo de software",
-  description: "Expertos en reparación de equipos, redes y desarrollo de software en Colima.",
+  description:
+    "Expertos en reparación de equipos, redes y desarrollo de software en Colima.",
   icons: {
-    icon: "/favicon.ico", // ✅ si está en `src/app/favicon.ico`
+    icon: "/favicon.ico",
   },
 };
 
+import WhatsappButton from "@/components/WhatsappButton";
+
 export default function HomePage() {
   return (
-    <section className="flex flex-col items-center justify-center text-center py-20">
-      <h1 className="text-4xl font-bold mb-4">Bienvenido a GB</h1>
-      <p className="text-lg text-gray-600 max-w-2xl">
-        Somos expertos en reparación de equipos, infraestructura de redes y desarrollo de software.
-        Ofrecemos soluciones personalizadas para empresas y particulares.En cualquier archivo .tsx
-      </p>
-      <div className="bg-red-500 text-white p-4">Esto debería verse con fondo rojo</div>
-    </section>
+    <main className="pt-20">
+      {/* Hero */}
+      <section className="w-full bg-gradient-to-b from-[#31a1ff] to-[#8dd7ff] py-20 text-center text-white">
+        <h1 className="text-5xl font-bold mb-6">GB REPARACION DE EQUIPOS DE COMPUTO</h1>
+        <p className="text-lg max-w-2xl mx-auto">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+        </p>
+        {/* Indicadores tipo carrusel */}
+        <div className="flex justify-center mt-6 gap-2">
+          <div className="w-4 h-4 rounded-full bg-gray-400"></div>
+          <div className="w-4 h-4 rounded-full bg-gray-300"></div>
+          <div className="w-4 h-4 rounded-full bg-gray-300"></div>
+        </div>
+      </section>
+
+      {/* Descripción general */}
+      <section className="text-center py-16 px-4">
+        <h2 className="text-3xl font-bold text-[#1b234b] mb-4">Descripción general</h2>
+        <p className="max-w-3xl mx-auto text-gray-700">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+        </p>
+      </section>
+
+      {/* Servicios */}
+      <section className="py-10 px-4 grid grid-cols-1 md:grid-cols-3 gap-6 max-w-6xl mx-auto">
+        {[1, 2, 3].map((num) => (
+          <div key={num} className="text-center">
+            <div className="bg-gray-300 rounded-lg h-40 mb-4"></div>
+            <h3 className="font-semibold mb-2">Servicio {num}</h3>
+            <p className="text-sm text-gray-600">
+              Lorem ipsum dolor amet, consectetur adipiscing elit. Malaesuada gravida curabitur enim.
+            </p>
+          </div>
+        ))}
+      </section>
+
+      {/* Botón CTA */}
+      <div className="text-center py-6">
+        <button className="bg-[#1b234b] text-white font-semibold px-6 py-3 rounded-full">
+          MORE
+        </button>
+      </div>
+
+      {/* Horario y promociones */}
+      <section className="bg-[#eef9ff] py-16 px-4 grid grid-cols-1 md:grid-cols-2 gap-10 max-w-6xl mx-auto">
+        <div>
+          <h4 className="text-xl font-semibold mb-4">HORARIO</h4>
+          <ul className="list-disc list-inside text-gray-700">
+            <li>Lunes a Viernes de 10 am - 7 pm</li>
+            <li>Sábados de 10 am - 3 pm</li>
+          </ul>
+        </div>
+        <div>
+          <h4 className="text-xl font-semibold mb-4">PROMOCIONES</h4>
+          <p className="text-gray-700">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Massa quam potenti nisl hendrerit erat.
+          </p>
+        </div>
+      </section>
+
+      <WhatsappButton />
+    </main>
   );
 }

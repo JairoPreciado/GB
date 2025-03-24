@@ -1,3 +1,7 @@
+<<<<<<< HEAD
+# GB
+Pagina de contacto 
+=======
 Asi es como se empieza la pagina para probarla desde local
 ## Empecemos
 
@@ -20,3 +24,4 @@ bun dev
 ```
 
 El proyecto se abrira en [http://localhost:3000](http://localhost:3000) asi que deberas buscar eso en tu navegador.
+>>>>>>> main

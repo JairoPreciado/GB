@@ -9,11 +9,11 @@ export default function Footer() {
         {/* Logo y enlaces */}
         <div>
           <Image
-            src="/assets/icono_navbar.jpg"
+            src="/assets/icono_navbar.png"
             alt="Logo GB"
-            width={100}
-            height={100}
-            className="mb-4 rounded-full"
+            width={200}
+            height={200}
+            className="mb-4 "
           />
           <ul className="space-y-2 text-sm">
             <li>
@@ -69,10 +69,13 @@ export default function Footer() {
         {/* Mapa */}
         <div>
           <h3 className="text-lg font-semibold mb-2">Dirección</h3>
-          <p className="text-sm mb-2">
-            Av. San Fernando 123, local 3<br />
-            Colima, Colima
-          </p>
+          <div className="text-sm">
+              <p>Codigo Postal: 28985</p>
+              <p>Avenida: Pablo Silva García #253</p>
+              <p>Villa de Oro.</p>
+              <p>Ciudad de Villa de Álvarez.</p>
+              <p>Colima.</p>
+            </div>
           <iframe
             title="Ubicación GB"
             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7532.820410654099!2d-103.75627166750827!3d19.264519600000018!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8425453dda2761cd%3A0x620b5177750a321f!2sReparaci%C3%B3n%20de%20Computadoras%20CGESC!5e0!3m2!1ses!2smx!4v1742709917539!5m2!1ses!2smx"
