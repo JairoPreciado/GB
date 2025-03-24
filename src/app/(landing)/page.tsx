@@ -8,7 +8,6 @@ export const metadata = {
   },
 };
 
-import Image from "next/image";
 import WhatsappButton from "@/components/WhatsappButton";
 
 export default function HomePage() {
