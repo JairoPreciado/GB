@@ -7,24 +7,22 @@ export const metadata = {
     icon: "/favicon.ico",
   },
 };
-
+import Carousel from "@/components/Carousel";
 import WhatsappButton from "@/components/WhatsappButton";
 
 export default function HomePage() {
   return (
     <main className="pt-20">
       {/* Hero */}
-      <section className="w-full bg-gradient-to-b from-[#31a1ff] to-[#8dd7ff] py-20 text-center text-white">
-        <h1 className="text-5xl font-bold mb-6">GB REPARACION DE EQUIPOS DE COMPUTO</h1>
+      <section className="w-full bg-gradient-to-b from-[#1656b7] to-[#bce6ff] py-20 text-center text-blue-950">
+        <h1 className="text-5xl font-bold mb-6">GB REPARACIÓN DE EQUIPOS DE CÓMPUTO</h1>
         <p className="text-lg max-w-2xl mx-auto">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
         </p>
-        {/* Indicadores tipo carrusel */}
-        <div className="flex justify-center mt-6 gap-2">
-          <div className="w-4 h-4 rounded-full bg-gray-400"></div>
-          <div className="w-4 h-4 rounded-full bg-gray-300"></div>
-          <div className="w-4 h-4 rounded-full bg-gray-300"></div>
-        </div>
+        </section>
+        {/* Carrusel agregado aquí */}
+        <section className="py-10">
+        <Carousel />
       </section>
 
       {/* Descripción general */}
@@ -56,22 +54,21 @@ export default function HomePage() {
       </div>
 
       {/* Horario y promociones */}
-      <section className="bg-[#eef9ff] py-16 px-4 grid grid-cols-1 md:grid-cols-2 gap-10 max-w-6xl mx-auto">
-        <div>
-          <h4 className="text-xl font-semibold mb-4">HORARIO</h4>
-          <ul className="list-disc list-inside text-gray-700">
-            <li>Lunes a Viernes de 10 am - 7 pm</li>
-            <li>Sábados de 10 am - 3 pm</li>
-          </ul>
-        </div>
-        <div>
-          <h4 className="text-xl font-semibold mb-4">PROMOCIONES</h4>
-          <p className="text-gray-700">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Massa quam potenti nisl hendrerit erat.
-          </p>
-        </div>
-      </section>
-
+      <section className="bg-[#bce6ff] rounded-lg bg-white p-6 shadow-md py-16 px-4 grid grid-cols-1 md:grid-cols-[1fr_2fr] gap-10 max-w-6xl mx-auto">
+  <div>
+    <h4 className="text-xl font-semibold text-center mb-4">HORARIO</h4>
+    <ul className="list-disc list-inside text-gray-700">
+      <li>Lunes a Viernes de 8:00 am - 8:00 pm</li>
+      <li>Sábados de 8:00 am - 4:00 pm</li>
+    </ul>
+  </div>
+  <div className="border-l-4 border-blue-500 pl-6">
+    <h4 className="text-xl text-center text-[#1b234b] font-semibold mb-4">PROMOCIONES</h4>
+    <p className="text-gray-700">
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Massa quam potenti nisl hendrerit erat.
+    </p>
+  </div>
+</section>
       <WhatsappButton />
     </main>
   );
