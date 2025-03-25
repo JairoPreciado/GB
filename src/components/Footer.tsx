@@ -4,7 +4,7 @@ import Link from "next/link";
 
 export default function Footer() {
   return (
-    <footer className="w-full bg-black text-white py-10 px-6 mt-16">
+    <footer className=" text-white py-10 px-6 mt-16" style={{ backgroundColor: "#1b224b" }}>
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-10">
         {/* Logo y enlaces */}
         <div>
@@ -53,8 +53,8 @@ export default function Footer() {
           <p className="text-sm">contacto@gbcolima.com</p>
 
           <h4 className="mt-4 font-semibold">Horario</h4>
-          <p className="text-sm">Lunes a Viernes de 10 am - 7 pm</p>
-          <p className="text-sm">Sábados de 10 am - 3 pm</p>
+          <p className="text-sm">Lunes a Viernes de 8:00 am - 8:00pm</p>
+          <p className="text-sm">Sábados de 8:00 am - 4:00 pm</p>
 
           <h4 className="mt-4 font-semibold">Envíanos un mensaje</h4>
           <Link
@@ -71,8 +71,8 @@ export default function Footer() {
           <h3 className="text-lg font-semibold mb-2">Dirección</h3>
           <div className="text-sm">
               <p>Codigo Postal: 28985</p>
-              <p>Avenida: Pablo Silva García #253</p>
-              <p>Villa de Oro.</p>
+              <p>Avenida Pablo Silva García #253</p>
+              <p>Colonia Villas de Oro.</p>
               <p>Ciudad de Villa de Álvarez.</p>
               <p>Colima.</p>
             </div>
