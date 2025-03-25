@@ -54,7 +54,7 @@ export default function HomePage() {
       </div>
 
       {/* Horario y promociones */}
-      <section className="bg-[#bce6ff] rounded-lg bg-white p-6 shadow-md py-16 px-4 grid grid-cols-1 md:grid-cols-[1fr_2fr] gap-10 max-w-6xl mx-auto">
+      <section className="bg-[#bce6ff] rounded-lg p-6 shadow-md py-16 px-4 grid grid-cols-1 md:grid-cols-[1fr_2fr] gap-10 max-w-6xl mx-auto">
   <div>
     <h4 className="text-xl font-semibold text-center mb-4">HORARIO</h4>
     <ul className="list-disc list-inside text-gray-700">
