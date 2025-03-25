@@ -38,7 +38,7 @@ export default function Navbar() {
     </Link>
   </li>
   <li className="relative">
-    <Link href="/about" className="hover:text-gray-200 transition after:content-[''] after:absolute after:left-0 after:bottom-0 after:w-0 after:h-[2px] after:bg-white after:transition-all after:duration-300 hover:after:w-full">
+    <Link href="/about-us" className="hover:text-gray-200 transition after:content-[''] after:absolute after:left-0 after:bottom-0 after:w-0 after:h-[2px] after:bg-white after:transition-all after:duration-300 hover:after:w-full">
       About us
     </Link>
   </li>
