@@ -27,7 +27,7 @@ export default function HomePage() {
 
       {/* Descripción general */}
       <section className="text-center py-16 px-4">
-        <h2 className="text-3xl font-bold text-[#1b234b] mb-4">Descripción general</h2>
+        <h2 className="text-3xl font-bold text-[#1b234b] mb-4">SERVICIOS</h2>
         <p className="max-w-3xl mx-auto text-gray-700">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
         </p>
