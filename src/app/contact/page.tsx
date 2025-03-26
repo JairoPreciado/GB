@@ -1,11 +1,14 @@
 // src/app/contact/page.tsx
 export const metadata = {
-  title: "Contacto - GB reparación de equipos de cómputo, redes y desarrollo de software",
-  description: "Ponte en contacto con nosotros para más información sobre nuestros servicios.",
+  title:
+    "Contacto - GB reparación de equipos de cómputo, redes y desarrollo de software",
+  description:
+    "Ponte en contacto con nosotros para más información sobre nuestros servicios.",
   icons: {
     icon: "/favicon.ico",
   },
 };
+
 import Link from "next/link";
 import WhatsappButton from "@/components/WhatsappButton";
 
@@ -14,79 +17,157 @@ export default function ContactPage() {
     <main className="pt-20">
       {/* Hero */}
       <section className="w-full bg-gradient-to-b from-[#1656b7] to-[#bce6ff] py-20 text-center text-blue-950">
-        <h1 className="text-5xl font-bold mb-6">GB REPARACIÓN DE EQUIPOS DE CÓMPUTO</h1>
+        <h1 className="text-5xl font-bold mb-6">
+          GB REPARACIÓN DE EQUIPOS DE CÓMPUTO
+        </h1>
         <p className="text-lg max-w-2xl mx-auto">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+          eiusmod tempor incididunt ut labore et dolore magna aliqua.
         </p>
-        </section>
-      {/* Sección de Contacto */}
-      <section className= "py-16 px-4 max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-[1fr_2fr] gap-10">
-        {/* Información de Contacto */}
-        <div>
-          <h2 className="text-2xl font-bold text-[#1b234b] mb-4">Información de Contacto</h2>
-          <p className="text-gray-700">Puedes comunicarte con nosotros a través de los siguientes medios:</p>
-          <ul className="mt-4 space-y-2">
-            <li><strong>Teléfono de Oficina:</strong> +52 123 456 7890</li>
-            <li><strong>Teléfono del Técnico  :</strong> +52 123 456 7890</li>
-            <li><strong>Email:</strong> contacto@gbcomputo.com</li>
-            <li><strong>Dirección:</strong> Calle Principal #123, Colima, México</li>
-          </ul>
-          <div className="flex gap-4 mt-4">
-  <Link
-    href="https://wa.me/5213121234567"
-    target="_blank"
-    className="bg-green-500 hover:bg-green-600 text-white font-semibold px-4 py-2 rounded-lg transition-colors"
-  >
-    WhatsApp
-  </Link>
-  <Link
-    href="tel:+5213121234567"
-    className="bg-blue-500 hover:bg-blue-600 text-white font-semibold px-4 py-2 rounded-lg transition-colors"
-  >
-    Llamar
-  </Link>
-</div>
+      </section>
 
-        </div>
+      {/* Sección de Información */}
+      <section className="py-16 px-4 max-w-6xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
+          {/* Company Info */}
+          <div className="bg-[#e0ecff] rounded-lg shadow-md p-6">
+            <div className="flex justify-center mb-4 text-blue-600 text-3xl">
+              <i className="fas fa-building"></i>
+            </div>
+            <h3 className="text-lg font-semibold mb-1">
+              Informacion de la empresa:
+            </h3>
+            <p>GB Sistemas Inteligentes</p>
+            <p>RFC: GBSI850101XXX</p>
+          </div>
 
-        {/* Formulario de Contacto */}
-        <div className="bg-[#bce6ff] p-6 rounded-lg shadow-md">
-          <h2 className="text-2xl font-bold text-[#1b234b] mb-4">Envíanos un Mensaje</h2>
-          <form className="space-y-4">
-            <div>
-              <label className="block text-gray-700">Nombre</label>
-              <input type="text" className="w-full p-2 border rounded" placeholder="Tu nombre" />
+          {/* Contact Info */}
+          <div className="bg-[#e0ecff] rounded-lg shadow-md p-6">
+            <div className="flex justify-center mb-4 text-blue-600 text-3xl">
+              <i className="fas fa-phone"></i>
             </div>
-            <div>
-              <label className="block text-gray-700">Correo Electrónico</label>
-              <input type="email" className="w-full p-2 border rounded" placeholder="tu@email.com" />
+            <h3 className="text-lg font-semibold mb-1">Contactanos:</h3>
+            <p>
+              <strong>Oficina:</strong> +52 312 123 4567
+            </p>
+            <p>
+              <strong>Técnico:</strong> +52 312 765 4321
+            </p>
+
+            <div className="flex gap-4 mt-4 justify-center">
+              <Link
+                href="https://wa.me/5213127654321"
+                target="_blank"
+                className="bg-green-500 hover:bg-green-600 text-white font-semibold px-4 py-2 rounded-lg transition-colors"
+              >
+                WhatsApp
+              </Link>
+              <Link
+                href="tel:+5213121234567"
+                className="bg-blue-500 hover:bg-blue-600 text-white font-semibold px-4 py-2 rounded-lg transition-colors"
+              >
+                Llamar
+              </Link>
             </div>
-            <div>
-              <label className="block text-gray-700">Mensaje</label>
-              <textarea className="w-full p-2 border rounded" rows={4} placeholder="Escribe tu mensaje aquí"></textarea>
+          </div>
+
+          {/* Address */}
+          <div className="bg-[#e0ecff] rounded-lg shadow-md p-6">
+            <div className="flex justify-center mb-4 text-blue-600 text-3xl">
+              <i className="fas fa-map-marker-alt"></i>
             </div>
-            <button type="submit" className="w-full bg-[#1b234b] text-white p-2 rounded">Enviar</button>
-          </form>
+            <h3 className="text-lg font-semibold mb-1">Direccion:</h3>
+            <p>Villa de Álvarez, Colima, México</p>
+            <p>Avenida Pablo Silva #253</p>
+            <p>CP: 28985</p>
+          </div>
         </div>
       </section>
-      {/* Horario y promociones */}
-      <section className="bg-[#bce6ff] rounded-lg p-6 shadow-md py-16 px-4 grid grid-cols-1 md:grid-cols-[1fr_2fr] gap-10 max-w-6xl mx-auto">
-  <div>
-    <h4 className="text-xl font-semibold text-center mb-4">HORARIO</h4>
-    <ul className="list-disc list-inside text-gray-700">
-      <li>Lunes a Viernes de 8:00 am - 8:00 pm</li>
-      <li>Sábados de 8:00 am - 4:00 pm</li>
-    </ul>
-  </div>
-  <div className="border-l-4 border-blue-500 pl-6">
-    <h4 className="text-xl text-center text-[#1b234b] font-semibold mb-4">PROMOCIONES</h4>
-    <p className="text-gray-700">
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Massa quam potenti nisl hendrerit erat.
-    </p>
-  </div>
-  </section>
 
-       {/* WhatsApp */}
+      {/* Formulario */}
+      <section className="pb-20 px-4 max-w-6xl mx-auto">
+        <form className="bg-[#bce6ff] p-8 rounded-lg shadow space-y-6">
+          <h2 className="text-2xl font-bold text-[#1b234b] mb-4">
+            Envíanos un Mensaje
+          </h2>
+          <div className="grid md:grid-cols-2 gap-4">
+            <div>
+              <label className="block text-sm mb-1 text-gray-700">
+                Nombres
+              </label>
+              <input
+                type="text"
+                placeholder="Bonnie"
+                className="w-full p-2 rounded border border-gray-300"
+              />
+            </div>
+            <div>
+              <label className="block text-sm mb-1 text-gray-700">
+                Apellidos
+              </label>
+              <input
+                type="text"
+                placeholder="Green"
+                className="w-full p-2 rounded border border-gray-300"
+              />
+            </div>
+            <div>
+              <label className="block text-sm mb-1 text-gray-700">
+                Tu correo electronico:
+              </label>
+              <input
+                type="email"
+                placeholder="name@gbcolima.com"
+                className="w-full p-2 rounded border border-gray-300"
+              />
+            </div>
+            <div>
+              <label className="block text-sm mb-1 text-gray-700">
+                Tu numero telefonico:
+              </label>
+              <input
+                type="tel"
+                placeholder="+(52) 312 123 4567"
+                className="w-full p-2 rounded border border-gray-300"
+              />
+            </div>
+          </div>
+
+          <div>
+            <label className="block text-sm mb-1 text-gray-700">
+              Tu mensaje
+            </label>
+            <textarea
+              rows={4}
+              placeholder="Escribe tu mensaje aquí..."
+              className="w-full p-2 rounded border border-gray-300"
+            ></textarea>
+          </div>
+
+          <div className="flex items-start">
+            <input type="checkbox" id="terms" className="mr-2" />
+            <label htmlFor="terms" className="block text-sm mb-1 text-gray-700">
+              Confirmo haber leído y aceptado los{" "}
+              <Link href="#" className="underline text-blue-800">
+                terminos y condiciones
+              </Link>{" "}
+              y{" "}
+              <Link href="#" className="underline text-blue-800">
+                politicas de privacidad
+              </Link>
+              .
+            </label>
+          </div>
+
+          <button
+            type="submit"
+            className="bg-[#1b234b] hover:bg-blue-700 text-white py-2 px-4 rounded"
+          >
+            Enviar mensaje
+          </button>
+        </form>
+      </section>
+
       <WhatsappButton />
     </main>
   );
