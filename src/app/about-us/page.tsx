@@ -1,7 +1,4 @@
 import Image from "next/image";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBullseye, faEye } from "@fortawesome/free-solid-svg-icons";
-
 export default function AboutPage() {
   return (
     <section className="py-16 px-4 max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-[1fr_2fr] gap-10 items-center">
@@ -34,7 +31,7 @@ export default function AboutPage() {
           {/* Misión */}
           <div className="flex items-center gap-4">
             <div className="bg-indigo-200 p-4 rounded-xl">
-              <FontAwesomeIcon icon={faBullseye} className="text-indigo-700 w-8 h-8" />
+             
             </div>
             <div>
               <h4 className="text-lg font-semibold">Misión</h4>
@@ -47,7 +44,7 @@ export default function AboutPage() {
           {/* Visión */}
           <div className="flex items-center gap-4">
             <div className="bg-indigo-200 p-4 rounded-xl">
-              <FontAwesomeIcon icon={faEye} className="text-indigo-700 w-8 h-8" />
+              
             </div>
             <div>
               <h4 className="text-lg font-semibold">Visión</h4>
