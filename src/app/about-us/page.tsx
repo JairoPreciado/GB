@@ -1,4 +1,4 @@
-import Image from "next/image";
+
 export default function AboutPage() {
   return (
     <section className="py-16 px-4 max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-[1fr_2fr] gap-10 items-center">
