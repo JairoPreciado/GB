@@ -3,9 +3,9 @@ import { useState } from "react";
 import Image from "next/image";
 
 const images = [
-  "/assets/imagen.webp",
-  "/assets/imagen.webp",
-  "/assets/imagen.webp",
+  "/assets/imagenx1.jpg",
+  "/assets/imagenx2.jpg",
+  "/assets/imagenx3.jpg",
 ];
 
 export default function Carousel() {
@@ -20,19 +20,20 @@ export default function Carousel() {
   };
 
   return (
-    <div className="relative w-full h-[500px] md:h-[600px] lg:h-[700px] overflow-hidden">
+    <div className="relative w-full h-[500px] md:h-[600px] lg:h-[700px] overflow-hidden rounded-xl shadow-lg">
       <div
         className="flex transition-transform duration-500 ease-in-out w-full h-full"
         style={{ transform: `translateX(-${currentIndex * 100}%)` }}
       >
         {images.map((src, index) => (
-          <div key={index} className="w-full flex-shrink-0 h-full">
+          <div key={index} className="w-full flex-shrink-0 h-full relative">
             <Image
               src={src}
               alt={`Slide ${index + 1}`}
-              layout="fill"
-              objectFit="cover"
-              className="w-full h-full"
+              fill
+              sizes="100vw"
+              className="object-cover w-full h-full"
+              priority={index === 0}
             />
           </div>
         ))}
