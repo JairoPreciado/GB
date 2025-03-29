@@ -1,13 +1,20 @@
-// app/admin/layout.tsx
-import type { ReactNode } from "react";
+// src/app/layout.tsx
+import "../../styles/globals.css";
+import type { Metadata } from "next";
 
-export default function AdminLayout({ children }: { children: ReactNode }) {
+export const metadata: Metadata = {
+  title: "GB Reparación de Equipos",
+  description: "Reparación, redes y desarrollo en Colima",
+};
+
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
-    <div className="min-h-screen bg-gray-100">
-      <header className="bg-[#1b234b] text-white py-4 px-6 font-bold">
-        Panel de Administración - GB
-      </header>
-      <main className="p-6">{children}</main>
-    </div>
+    <html lang="es">
+      <body>{children}</body>
+    </html>
   );
 }
