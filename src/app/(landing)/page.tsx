@@ -1,20 +1,47 @@
 // src/app/(landing)/page.tsx
+
 export const metadata = {
-  title: "GB reparación de equipos de computo, redes y desarrollo de software",
+  title: "GB | Reparación de equipos de cómputo, redes y desarrollo de software en Colima",
   description:
-    "Expertos en reparación de equipos, redes y desarrollo de software en Colima.",
+    "En GB somos especialistas en reparación de computadoras, configuración de redes y desarrollo de software a la medida. Atención profesional en Colima.",
+  keywords: [
+    "reparación de computadoras en Colima",
+    "configuración de redes",
+    "desarrollo de software Colima",
+    "servicio técnico de equipos de cómputo",
+    "GB computadoras",
+    "mantenimiento de PC",
+    "empresa de software en Colima"
+  ],
+  openGraph: {
+    title: "GB | Reparación de equipos, redes y desarrollo de software",
+    description:
+      "Conoce los servicios de GB: reparación profesional de equipos, redes empresariales y desarrollo de software en Colima.",
+    url: "https://tusitio.com", // cámbialo por el dominio real
+    type: "website",
+    locale: "es_MX"
+  },
+  robots: {
+    index: true,
+    follow: true,
+    nocache: false
+  },
   icons: {
     icon: "/favicon.ico",
   },
+  metadataBase: new URL("https://tusitio.com"), // opcional, para OpenGraph y canonicals
 };
+
 import Carousel from "@/components/Carousel";
 import WhatsappButton from "@/components/WhatsappButton";
 import Promociones from "@/components/Promociones";
+import AnimatedOnScroll from "@/components/AnimatedOnScroll";
 
 export default function HomePage() {
   return (
     <main className="pt-20">
       {/* Hero */}
+      <AnimatedOnScroll>
       <section className="w-full bg-gradient-to-b from-[#1656b7] to-[#bce6ff] py-20 text-center text-blue-950">
         <h1 className="text-5xl font-bold mb-6">
           GB REPARACIÓN DE EQUIPOS DE CÓMPUTO
@@ -24,13 +51,17 @@ export default function HomePage() {
           eiusmod tempor incididunt ut labore et dolore magna aliqua.
         </p>
       </section>
+      </AnimatedOnScroll>
 
       {/* Carrusel agregado aquí */}
+      <AnimatedOnScroll>
       <section className="py-10">
         <Carousel />
       </section>
+      </AnimatedOnScroll>
 
       {/* Descripción general */}
+      <AnimatedOnScroll>
       <section className="text-center py-16 px-4">
         <h2 className="text-3xl font-bold text-[#1b234b] mb-4">
           Descripción general
@@ -42,8 +73,10 @@ export default function HomePage() {
           aliquip ex ea commodo consequat.
         </p>
       </section>
+      </AnimatedOnScroll>
 
       {/* Servicios */}
+      <AnimatedOnScroll>
       <section className="py-10 px-4 grid grid-cols-1 md:grid-cols-3 gap-6 max-w-6xl mx-auto">
         {[1, 2, 3].map((num) => (
           <div key={num} className="text-center">
@@ -56,15 +89,19 @@ export default function HomePage() {
           </div>
         ))}
       </section>
+      </AnimatedOnScroll>
 
       {/* Botón CTA */}
+      <AnimatedOnScroll>
       <div className="text-center py-6">
         <button className="bg-[#1b234b] text-white font-semibold px-6 py-3 rounded-full">
           MORE
         </button>
       </div>
-
+      </AnimatedOnScroll>
+      
       {/* HORARIO */}
+      <AnimatedOnScroll>
       <section className="bg-[#e5f3ff] rounded-lg p-6 shadow-md py-16 px-4 max-w-6xl mx-auto">
         <h4 className="text-2xl font-semibold text-center mb-10 text-[#1b234b]">
           Horarios de atención
@@ -92,11 +129,14 @@ export default function HomePage() {
           ))}
         </div>
       </section>
+      </AnimatedOnScroll>
 
       {/* PROMOCIONES */}
+      <AnimatedOnScroll>
       <section className="max-w-6xl mx-auto mt-12">
         <Promociones />
       </section>
+      </AnimatedOnScroll>
       <WhatsappButton />
     </main>
   );
