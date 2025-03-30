@@ -1,4 +1,4 @@
-import { NextResponse } from 'next/server'
+/*import { NextResponse } from 'next/server'
 import { systemPrompt } from '@/chatbot/utils/systemPrompt'
 
 export async function POST(req: Request) {
@@ -41,3 +41,4 @@ console.log('[OpenAI response]', data) // <-- AGREGA ESTO
     )
   }
 }
+*/
