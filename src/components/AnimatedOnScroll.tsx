@@ -16,13 +16,14 @@ export default function AnimatedOnScroll({
   const [hasAnimated, setHasAnimated] = useState(false);
 
   useEffect(() => {
-    if (!ref.current) return;
+    const element = ref.current;
+    if (!element) return;
 
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting && !hasAnimated) {
           controls.start("visible");
-          setHasAnimated(true); // solo una vez
+          setHasAnimated(true);
         }
       },
       {
@@ -30,10 +31,10 @@ export default function AnimatedOnScroll({
       }
     );
 
-    observer.observe(ref.current);
+    observer.observe(element);
 
     return () => {
-      if (ref.current) observer.unobserve(ref.current);
+      observer.unobserve(element);
     };
   }, [controls, hasAnimated]);
 
