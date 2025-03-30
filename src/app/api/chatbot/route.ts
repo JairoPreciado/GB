@@ -4,8 +4,8 @@ import { systemPrompt } from '@/chatbot/utils/systemPrompt'
 export async function POST(req: Request) {
   const { message } = await req.json()
 
-  const apiKey = ""
-  if (!apiKey) {
+  const cosa = "hola"
+  if (!cosa) {
     return NextResponse.json({ reply: 'API Key no configurada' }, { status: 500 })
   }
 
@@ -13,7 +13,7 @@ export async function POST(req: Request) {
     const openaiRes = await fetch('https://api.openai.com/v1/chat/completions', {
       method: 'POST',
       headers: {
-        'Authorization': `Bearer ${apiKey}`,
+        'Authorization': `Bearer ${cosa}`,
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
