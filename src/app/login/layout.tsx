@@ -1,4 +1,4 @@
-// src/app/layout.tsx
+// src/app/login/layout.tsx
 import "../../styles/globals.css";
 
 export default function LoginLayout({ children }: { children: React.ReactNode }) {

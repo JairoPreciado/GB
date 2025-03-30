@@ -36,6 +36,7 @@ import Carousel from "@/components/Carousel";
 import WhatsappButton from "@/components/WhatsappButton";
 import Promociones from "@/components/Promociones";
 import AnimatedOnScroll from "@/components/AnimatedOnScroll";
+import ChatBot from "@/chatbot/components/ChatWidget";
 
 export default function HomePage() {
   return (
@@ -138,6 +139,7 @@ export default function HomePage() {
       </section>
       </AnimatedOnScroll>
       <WhatsappButton />
+      <ChatBot />
     </main>
   );
 }
