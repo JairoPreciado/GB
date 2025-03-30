@@ -4,7 +4,7 @@ import { systemPrompt } from '@/chatbot/utils/systemPrompt'
 export async function POST(req: Request) {
   const { message } = await req.json()
 
-  const apiKey = "Api aqui xd"
+  const apiKey = ""
   if (!apiKey) {
     return NextResponse.json({ reply: 'API Key no configurada' }, { status: 500 })
   }
