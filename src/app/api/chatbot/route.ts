@@ -1,11 +1,11 @@
-/*import { NextResponse } from 'next/server'
+import { NextResponse } from 'next/server'
 import { systemPrompt } from '@/chatbot/utils/systemPrompt'
 
 export async function POST(req: Request) {
   const { message } = await req.json()
 
-  const cosa = "hola"
-  if (!cosa) {
+  const apikey = "aqui la api xd"
+  if (!apikey) {
     return NextResponse.json({ reply: 'API Key no configurada' }, { status: 500 })
   }
 
@@ -13,7 +13,7 @@ export async function POST(req: Request) {
     const openaiRes = await fetch('https://google.com/v1/chat/completions', {
       method: 'POST',
       headers: {
-        'Authorization': `Bearer ${cosa}`,
+        'Authorization': `Bearer ${apikey}`,
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
@@ -41,4 +41,3 @@ console.log('[OpenAI response]', data) // <-- AGREGA ESTO
     )
   }
 }
-*/
