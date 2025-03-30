@@ -3,6 +3,7 @@
 import { useState, useEffect, useRef } from "react";
 import { useRouter } from "next/navigation";
 import Cookies from "js-cookie";
+import Image from "next/image";
 
 interface Promo {
   id: number;
@@ -205,7 +206,7 @@ export default function AdminDashboard() {
         <h3 className="text-xl font-semibold mb-4 text-[#1b234b]">Previsualización</h3>
         <div className="bg-white border shadow-sm rounded-lg p-4 max-w-xl mx-auto">
           {promo.imagenURL && (
-            <img
+            <Image
               src={promo.imagenURL}
               alt="Vista previa"
               className="rounded mb-4 w-full max-h-60 object-cover"
@@ -231,7 +232,7 @@ export default function AdminDashboard() {
                 className="bg-white border rounded-lg shadow p-4 flex flex-col items-center"
               >
                 {item.imagenURL && (
-                  <img
+                  <Image
                     src={item.imagenURL}
                     alt="Promo"
                     className="rounded mb-2 w-full max-h-40 object-cover"

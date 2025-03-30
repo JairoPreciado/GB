@@ -27,7 +27,7 @@ export default function Login() {
       });
 
       router.push("/admin");
-    } catch (err: any) {
+    } catch (Error: any) {
       setError("Correo o contraseña incorrectos");
     }
   };

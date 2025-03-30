@@ -43,7 +43,7 @@ export default function ChatWidget() {
         text: data.reply || 'Respuesta no disponible.',
       }
       setMessages((prev) => [...prev, botMessage])
-    } catch (error) {
+    } catch (error:any) {
       setMessages((prev) => [
         ...prev,
         { from: 'bot', text: 'Error en el servidor.' },
