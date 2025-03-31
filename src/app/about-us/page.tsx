@@ -7,6 +7,7 @@ export const metadata = {
     icon: "/favicon.ico",
   },
 };
+import Image from "next/image";
 
 export default function AboutPage() {
   return (
@@ -14,12 +15,12 @@ export default function AboutPage() {
     <section className="py-16 px-4 max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-[1fr_2fr] gap-10 items-center">
   {/* Sección de imágenes */}
   <div className="flex gap-4">
-    <img 
+    <Image 
       src="/assets/example.png" 
       alt="Team working" 
       className="w-1/2 rounded-2xl shadow-lg"
     />
-    <img 
+    <Image
       src="/assets/team.jpg" 
       alt="Meeting discussion" 
       className="w-1/2 rounded-2xl shadow-lg"
@@ -143,15 +144,15 @@ export default function AboutPage() {
         <h2 className="text-2xl font-bold">Lo que dicen nuestros clientes</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 mt-8 max-w-5xl mx-auto">
           <div className="p-4 shadow-lg rounded-lg bg-blue-500 hover:bg-blue-600 transition-colors">
-            <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin sit amet tristique mi."</p>
+            <p>'"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin sit amet tristique mi."'</p>
             <h3 className="mt-4 font-bold">- Cliente 1</h3>
           </div>
           <div className="p-4 shadow-lg rounded-lg bg-blue-500 hover:bg-blue-600 transition-colors">
-            <p>"Nullam ac augue eget diam posuere vehicula. Vivamus quis nulla ac justo euismod posuere."</p>
+            <p>'"Nullam ac augue eget diam posuere vehicula. Vivamus quis nulla ac justo euismod posuere."'</p>
             <h3 className="mt-4 font-bold">- Cliente 2</h3>
           </div>
           <div className="p-4 shadow-lg rounded-lg bg-blue-500 hover:bg-blue-600 transition-colors">
-            <p>"Fusce tincidunt, arcu nec vestibulum tincidunt, eros massa ullamcorper urna."</p>
+            <p>'"Fusce tincidunt, arcu nec vestibulum tincidunt, eros massa ullamcorper urna."'</p>
             <h3 className="mt-4 font-bold">- Cliente 3</h3>
           </div>
         </div>
