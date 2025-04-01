@@ -1,100 +1,109 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
+import Image from "next/image";
 import { useRouter } from "next/navigation";
 import Cookies from "js-cookie";
-import Image from "next/image";
-
-interface Promo {
-  id: number;
-  titulo: string;
-  descripcion: string;
-  precio: string;
-  imagen: File | null;
-  imagenURL: string;
-  fechaExpiracion: string;
-  fechaCreacion: string;
-}
+import { collection, addDoc, getDocs, deleteDoc, doc } from "firebase/firestore";
+import { db } from "@/lib/firebase"; // Ajusta la ruta según tu estructura
 
 export default function AdminDashboard() {
   const router = useRouter();
+  const subirRef = useRef<HTMLDivElement>(null!);
+  const verRef = useRef<HTMLDivElement>(null!);
 
-  const [promos, setPromos] = useState<Promo[]>([]);
-  const [promo, setPromo] = useState<Promo>({
-    id: Date.now(),
-    titulo: "",
-    descripcion: "",
-    precio: "",
-    imagen: null,
-    imagenURL: "",
-    fechaExpiracion: "",
-    fechaCreacion: new Date().toISOString().split("T")[0],
-  });
+  // Estados para el input, mensaje de éxito, error, promociones y modal
+  const [inputUrl, setInputUrl] = useState("");
+  const [uploadSuccess, setUploadSuccess] = useState(false);
   const [error, setError] = useState("");
-  const crearRef = useRef<HTMLDivElement>(null!);
-  const activasRef = useRef<HTMLDivElement>(null!);
-  const paramRef = useRef<HTMLDivElement>(null!);
-  const previewRef = useRef<HTMLDivElement>(null!);
+  const [promos, setPromos] = useState<Array<{ id: string; imageUrl: string }>>([]);
+  const [modalImage, setModalImage] = useState<string | null>(null);
 
+  // Verificar token y cargar promociones al iniciar
   useEffect(() => {
     const token = Cookies.get("token");
-    if (!token) {
-      router.push("/login");
-    }
+    if (!token) router.push("/login");
+    fetchPromos();
   }, [router]);
+
+  // Función para scroll suave entre secciones
+  const scrollTo = (ref: React.RefObject<HTMLDivElement>) => {
+    ref.current?.scrollIntoView({ behavior: "smooth" });
+  };
 
   const handleLogout = () => {
     Cookies.remove("token");
     router.push("/login");
   };
 
-  const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0];
-    if (file) {
-      setPromo((prev) => ({
-        ...prev,
-        imagen: file,
-        imagenURL: URL.createObjectURL(file),
-      }));
+  // Transforma la URL de Google Drive a una URL directa
+  const transformDriveUrl = (url: string) => {
+    // Se espera una URL del tipo:
+    // https://drive.google.com/file/d/FILE_ID/view?usp=sharing
+    // Se extrae el FILE_ID y se crea el link directo
+    const regex = /\/file\/d\/([^/]+)\//;
+    const match = url.match(regex);
+    if (match && match[1]) {
+      return `https://drive.google.com/uc?export=view&id=${match[1]}`;
     }
+    return "";
   };
 
-  const handleSave = () => {
-    if (!promo.titulo || !promo.descripcion || !promo.precio || !promo.fechaExpiracion || !promo.imagenURL) {
-      setError("Todos los campos son obligatorios.");
+  // Función para subir la promoción a Firestore
+  const handleUpload = async () => {
+    if (!inputUrl) {
+      setError("Debes ingresar la URL de Google Drive.");
       return;
     }
-    setPromos([...promos, promo]);
-    setPromo({
-      id: Date.now(),
-      titulo: "",
-      descripcion: "",
-      precio: "",
-      imagen: null,
-      imagenURL: "",
-      fechaExpiracion: "",
-      fechaCreacion: new Date().toISOString().split("T")[0],
-    });
-    setError("");
+    const directUrl = transformDriveUrl(inputUrl);
+    if (!directUrl) {
+      setError("La URL ingresada no es válida.");
+      return;
+    }
+    try {
+      // Guardamos la promoción en la colección "promociones"
+      const docRef = await addDoc(collection(db, "promociones"), {
+        imageUrl: directUrl,
+        createdAt: new Date().toISOString(),
+      });
+      // Actualizamos el estado local agregando la nueva promoción
+      setPromos((prev) => [...prev, { id: docRef.id, imageUrl: directUrl }]);
+      setUploadSuccess(true);
+      setInputUrl("");
+      setError("");
+      // Se muestra el mensaje de éxito durante 5 segundos
+      setTimeout(() => {
+        setUploadSuccess(false);
+      }, 5000);
+    } catch (error) {
+      console.error("Error al subir la promoción:", error);
+      setError("Error al subir la promoción.");
+    }
   };
 
-  const handleReset = () => {
-    setPromo({
-      id: Date.now(),
-      titulo: "",
-      descripcion: "",
-      precio: "",
-      imagen: null,
-      imagenURL: "",
-      fechaExpiracion: "",
-      fechaCreacion: new Date().toISOString().split("T")[0],
-    });
-    setError("");
+  // Función para obtener las promociones de Firestore
+  const fetchPromos = async () => {
+    try {
+      const querySnapshot = await getDocs(collection(db, "promociones"));
+      const promosArray: Array<{ id: string; imageUrl: string }> = [];
+      querySnapshot.forEach((doc) => {
+        const data = doc.data();
+        promosArray.push({ id: doc.id, imageUrl: data.imageUrl });
+      });
+      setPromos(promosArray);
+    } catch (error) {
+      console.error("Error al obtener promociones:", error);
+    }
   };
 
-  const scrollToRef = (ref: React.RefObject<HTMLDivElement>) => {
-    if (ref.current) {
-      ref.current.scrollIntoView({ behavior: "smooth" });
+  // Función para borrar una promoción de Firestore
+  const handleDelete = async (id: string) => {
+    try {
+      await deleteDoc(doc(db, "promociones", id));
+      // Actualizamos el estado local filtrando la promoción borrada
+      setPromos((prev) => prev.filter((promo) => promo.id !== id));
+    } catch (error) {
+      console.error("Error al borrar la promoción:", error);
     }
   };
 
@@ -103,10 +112,8 @@ export default function AdminDashboard() {
       {/* Navbar */}
       <nav className="bg-[#1b234b] text-white px-6 py-4 flex justify-between items-center sticky top-0 z-50">
         <div className="flex gap-4">
-          <button onClick={() => scrollToRef(crearRef)}>Crear promoción</button>
-          <button onClick={() => scrollToRef(paramRef)}>Parámetros</button>
-          <button onClick={() => scrollToRef(previewRef)}>Previsualización</button>
-          <button onClick={() => scrollToRef(activasRef)}>Promociones activas</button>
+          <button onClick={() => scrollTo(subirRef)}>Subir promoción</button>
+          <button onClick={() => scrollTo(verRef)}>Ver promociones activas</button>
         </div>
         <button
           onClick={handleLogout}
@@ -116,137 +123,90 @@ export default function AdminDashboard() {
         </button>
       </nav>
 
-      {/* Crear promoción */}
-      <section ref={crearRef} className="max-w-5xl mx-auto py-10">
-        <h2 className="text-3xl font-bold text-[#1b234b] mb-6">Gestión de Promociones</h2>
-
-        <form className="bg-[#e5f3ff] p-6 rounded-lg shadow-md space-y-4">
-          {error && <p className="text-red-600 font-semibold">{error}</p>}
-          <div>
-            <label className="block font-medium text-sm mb-1">Título:</label>
-            <input
-              type="text"
-              value={promo.titulo}
-              onChange={(e) => setPromo({ ...promo, titulo: e.target.value })}
-              className="w-full border border-gray-300 rounded p-2"
-            />
-          </div>
-
-          <div>
-            <label className="block font-medium text-sm mb-1">Descripción:</label>
-            <textarea
-              value={promo.descripcion}
-              onChange={(e) => setPromo({ ...promo, descripcion: e.target.value })}
-              className="w-full border border-gray-300 rounded p-2"
-              rows={3}
-            />
-          </div>
-
-          <div>
-            <label className="block font-medium text-sm mb-1">Precio o descuento:</label>
-            <input
-              type="text"
-              value={promo.precio}
-              onChange={(e) => setPromo({ ...promo, precio: e.target.value })}
-              className="w-full border border-gray-300 rounded p-2"
-            />
-          </div>
-
-          <div>
-            <label className="block font-medium text-sm mb-1">Fecha de expiración:</label>
-            <input
-              type="date"
-              value={promo.fechaExpiracion}
-              onChange={(e) => setPromo({ ...promo, fechaExpiracion: e.target.value })}
-              className="w-full border border-gray-300 rounded p-2"
-            />
-          </div>
-
-          <div>
-            <label className="block font-medium text-sm mb-1">Imagen:</label>
-            <input
-              type="file"
-              accept="image/*"
-              onChange={handleImageChange}
-              className="w-full"
-            />
-          </div>
-
-          <div className="flex gap-4">
-            <button
-              type="button"
-              onClick={handleSave}
-              className="bg-[#1b234b] hover:bg-[#12203d] text-white py-2 px-6 rounded font-semibold"
-            >
-              Guardar
-            </button>
-            <button
-              type="button"
-              onClick={handleReset}
-              className="bg-gray-400 hover:bg-gray-500 text-white py-2 px-6 rounded font-semibold"
-            >
-              Limpiar
-            </button>
-          </div>
-        </form>
+      {/* Sección para subir promoción */}
+      <section ref={subirRef} className="max-w-xl mx-auto py-10 px-4">
+        <h2 className="text-2xl font-bold text-[#1b234b] mb-4">Subir promoción</h2>
+        {error && <p className="text-red-600 mb-4">{error}</p>}
+        <input
+          type="text"
+          placeholder="Ingresa la URL de Google Drive"
+          value={inputUrl}
+          onChange={(e) => setInputUrl(e.target.value)}
+          className="border p-2 rounded w-full mb-4"
+        />
+        <button
+          onClick={handleUpload}
+          className="bg-[#1b234b] hover:bg-[#12203d] text-white py-2 px-6 rounded font-semibold"
+        >
+          Subir imagen
+        </button>
+        {uploadSuccess && (
+          <p className="mt-4 text-green-600">Promoción subida con éxito.</p>
+        )}
       </section>
 
-      {/* Parámetros */}
-      <section ref={paramRef} className="max-w-5xl mx-auto py-10">
-        <h3 className="text-xl font-semibold mb-4 text-[#1b234b]">Parámetros de la promoción</h3>
-        <ul className="list-disc pl-5 text-gray-700">
-          <li>Máximo 6 promociones activas.</li>
-          <li>Fecha de expiración obligatoria.</li>
-          <li>Imagen recomendada 1200x630px.</li>
-        </ul>
-      </section>
-
-      {/* Previsualización */}
-      <section ref={previewRef} className="max-w-5xl mx-auto py-10">
-        <h3 className="text-xl font-semibold mb-4 text-[#1b234b]">Previsualización</h3>
-        <div className="bg-white border shadow-sm rounded-lg p-4 max-w-xl mx-auto">
-          {promo.imagenURL && (
-            <Image
-              src={promo.imagenURL}
-              alt="Vista previa"
-              className="rounded mb-4 w-full max-h-60 object-cover"
-            />
-          )}
-          <h4 className="text-lg font-bold mb-1">{promo.titulo || "Título de ejemplo"}</h4>
-          <p className="text-gray-700 mb-2">{promo.descripcion || "Descripción de la promoción."}</p>
-          {promo.precio && <p className="text-[#1656b7] font-semibold">Precio: {promo.precio}</p>}
-          {promo.fechaExpiracion && <p className="text-sm text-gray-500">Expira el: {promo.fechaExpiracion}</p>}
-        </div>
-      </section>
-
-      {/* Promociones activas */}
-      <section ref={activasRef} className="max-w-5xl mx-auto py-10">
-        <h3 className="text-xl font-semibold mb-4 text-[#1b234b]">Promociones activas</h3>
+      {/* Sección para ver promociones activas */}
+      <section ref={verRef} className="max-w-6xl mx-auto py-10 px-4">
+        <h2 className="text-2xl font-bold text-[#1b234b] mb-6">Promociones activas</h2>
         {promos.length === 0 ? (
-          <p className="text-gray-600">No hay promociones activas.</p>
+          <p className="text-gray-600 text-center">No hay promociones activas.</p>
         ) : (
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {promos.slice(0, 6).map((item) => (
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+            {promos.map((promo) => (
               <div
-                key={item.id}
-                className="bg-white border rounded-lg shadow p-4 flex flex-col items-center"
+                key={promo.id}
+                className="relative cursor-pointer bg-white rounded-lg shadow hover:shadow-lg transition p-2"
+                onClick={() => setModalImage(promo.imageUrl)}
               >
-                {item.imagenURL && (
-                  <Image
-                    src={item.imagenURL}
-                    alt="Promo"
-                    className="rounded mb-2 w-full max-h-40 object-cover"
-                  />
-                )}
-                <h4 className="font-semibold text-center">{item.titulo}</h4>
-                <p className="text-sm text-center text-gray-600">{item.descripcion}</p>
-                <p className="text-[#1656b7] font-semibold mt-1">{item.precio}</p>
-                <p className="text-sm text-gray-500">Expira el: {item.fechaExpiracion}</p>
+                <Image
+                  src={promo.imageUrl}
+                  alt="Promoción"
+                  width={400}
+                  height={250}
+                  className="w-full h-48 object-cover rounded"
+                />
+                {/* Botón para borrar, se detiene la propagación para que no abra el modal */}
+                <button
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    handleDelete(promo.id);
+                  }}
+                  className="absolute top-2 right-2 bg-red-600 text-white px-2 py-1 rounded text-xs hover:bg-red-700"
+                >
+                  Borrar
+                </button>
               </div>
             ))}
           </div>
         )}
       </section>
+
+      {/* Modal para ver la imagen ampliada */}
+      {modalImage && (
+        <div
+          className="fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center z-50"
+          onClick={() => setModalImage(null)}
+        >
+          <div
+            className="bg-white rounded-lg p-4 max-w-[40%] w-[1200px] shadow-lg"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <Image
+              src={modalImage}
+              alt="Promoción"
+              width={600}
+              height={375}
+              className="w-full h-auto object-contain rounded"
+            />
+            <button
+              onClick={() => setModalImage(null)}
+              className="mt-4 px-4 py-2 bg-[#1b234b] text-white rounded"
+            >
+              Cerrar
+            </button>
+          </div>
+        </div>
+      )}
     </>
   );
 }
