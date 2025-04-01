@@ -1,4 +1,4 @@
-// src/app/(landing)/layout.tsx
+// src/app/about-us/layout.tsx
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import "./../../styles/globals.css";
