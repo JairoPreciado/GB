@@ -144,15 +144,15 @@ export default function AboutPage() {
         <h2 className="text-2xl font-bold">Lo que dicen nuestros clientes</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 mt-8 max-w-5xl mx-auto">
           <div className="p-4 shadow-lg rounded-lg bg-blue-500 hover:bg-blue-600 transition-colors">
-            <p>'"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin sit amet tristique mi."'</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin sit amet tristique mi.</p>
             <h3 className="mt-4 font-bold">- Cliente 1</h3>
           </div>
           <div className="p-4 shadow-lg rounded-lg bg-blue-500 hover:bg-blue-600 transition-colors">
-            <p>'"Nullam ac augue eget diam posuere vehicula. Vivamus quis nulla ac justo euismod posuere."'</p>
+            <p>Nullam ac augue eget diam posuere vehicula. Vivamus quis nulla ac justo euismod posuere.</p>
             <h3 className="mt-4 font-bold">- Cliente 2</h3>
           </div>
           <div className="p-4 shadow-lg rounded-lg bg-blue-500 hover:bg-blue-600 transition-colors">
-            <p>'"Fusce tincidunt, arcu nec vestibulum tincidunt, eros massa ullamcorper urna."'</p>
+            <p>Fusce tincidunt, arcu nec vestibulum tincidunt, eros massa ullamcorper urna.</p>
             <h3 className="mt-4 font-bold">- Cliente 3</h3>
           </div>
         </div>
