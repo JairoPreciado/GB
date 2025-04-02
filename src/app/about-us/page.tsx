@@ -15,17 +15,24 @@ export default function AboutPage() {
     <section className="py-16 px-4 max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-[1fr_2fr] gap-10 items-center">
   {/* Sección de imágenes */}
   <div className="flex gap-4">
-    <Image 
-      src="/assets/example.png" 
-      alt="Team working" 
-      className="w-1/2 rounded-2xl shadow-lg"
-    />
+  <div className="relative w-1/2 h-64">
     <Image
-      src="/assets/team.jpg" 
-      alt="Meeting discussion" 
-      className="w-1/2 rounded-2xl shadow-lg"
+      src="/assets/example.png"
+      alt="Team working"
+      fill
+      className="rounded-2xl shadow-lg object-cover"
     />
   </div>
+
+  <div className="relative w-1/2 h-64">
+    <Image
+      src="/assets/team.jpg"
+      alt="Meeting discussion"
+      fill
+      className="rounded-2xl shadow-lg object-cover"
+    />
+  </div>
+</div>
 
   {/* Sección de texto */}
   <div>
