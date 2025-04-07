@@ -16,6 +16,7 @@ import Link from "next/link";
 import AnimatedOnScroll from "@/components/AnimatedOnScroll";
 import WhatsappButton from "@/components/WhatsappButton";
 import ChatBot from "@/chatbot/components/ChatWidget"; // Importa tu componente de chatbot
+import ContactForm from "@/components/ContactForm"; // Asegúrate de que la ruta sea correcta
 
 export default function ContactPage() {
   return (
@@ -186,81 +187,7 @@ export default function ContactPage() {
             <h2 className="text-2xl font-bold text-indigo-700 mb-4">
               Envíanos un Mensaje
             </h2>
-            <div className="grid md:grid-cols-2 gap-4">
-              <div>
-                <label className="block text-sm mb-1 text-gray-700">
-                  Nombres
-                </label>
-                <input
-                  type="text"
-                  placeholder="Bonnie"
-                  className="w-full p-2 rounded border border-gray-300"
-                />
-              </div>
-              <div>
-                <label className="block text-sm mb-1 text-gray-700">
-                  Apellidos
-                </label>
-                <input
-                  type="text"
-                  placeholder="Green"
-                  className="w-full p-2 rounded border border-gray-300"
-                />
-              </div>
-              <div>
-                <label className="block text-sm mb-1 text-gray-700">
-                  Tu correo electrónico
-                </label>
-                <input
-                  type="email"
-                  placeholder="name@gbcolima.com"
-                  className="w-full p-2 rounded border border-gray-300"
-                />
-              </div>
-              <div>
-                <label className="block text-sm mb-1 text-gray-700">
-                  Tu número telefónico
-                </label>
-                <input
-                  type="tel"
-                  placeholder="+(52) 312 123 4567"
-                  className="w-full p-2 rounded border border-gray-300"
-                />
-              </div>
-            </div>
-
-            <div>
-              <label className="block text-sm mb-1 text-gray-700">
-                Tu mensaje
-              </label>
-              <textarea
-                rows={4}
-                placeholder="Escribe tu mensaje aquí..."
-                className="w-full p-2 rounded border border-gray-300"
-              ></textarea>
-            </div>
-
-            <div className="flex items-start">
-              <input type="checkbox" id="terms" className="mr-2 mt-1" />
-              <label htmlFor="terms" className="block text-sm text-gray-700">
-                Confirmo haber leído y aceptado los{" "}
-                <Link href="#" className="underline text-blue-800">
-                  términos y condiciones
-                </Link>{" "}
-                y{" "}
-                <Link href="#" className="underline text-blue-800">
-                  políticas de privacidad
-                </Link>
-                .
-              </label>
-            </div>
-
-            <button
-              type="submit"
-              className="bg-indigo-600 hover:bg-indigo-700 text-white py-2 px-4 rounded"
-            >
-              Enviar mensaje
-            </button>
+            <ContactForm />
           </div>
         </section>
       </AnimatedOnScroll>
