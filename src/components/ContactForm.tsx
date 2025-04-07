@@ -21,10 +21,10 @@ const ContactForm = () => {
 
     emailjs
       .send(
-        "service_yjeqo8e",//aqui va el id del servicio del correo de gb
-        "template_gc9dx5h",//aqui va el id del template del correo de gb
+        "service_zezgwag",//aqui va el id del servicio del correo de gb
+        "template_9ahhyz8",//aqui va el id del template del correo de gb
         form,
-        "OCzlzOAMJoDif2pI3"//aqui va el id del usuario del correo de gb
+        "btCJpvyqzQp79aeBs"//aqui va el id del usuario del correo de gb
       )
       .then(
         () => {
