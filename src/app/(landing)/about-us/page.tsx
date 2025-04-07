@@ -14,6 +14,8 @@ export const metadata = {
 import Image from "next/image";
 import TestimonialsCarousel from "@/components/TestimonialsCarousel";
 import AnimatedOnScroll from "@/components/AnimatedOnScroll";
+import WhatsappButton from "@/components/WhatsappButton";
+import ChatBot from "@/chatbot/components/ChatWidget";
 
 export default function AboutPage() {
   return (
@@ -205,6 +207,10 @@ export default function AboutPage() {
           <TestimonialsCarousel />
         </section>
       </AnimatedOnScroll>
+
+      {/* Botón flotante de WhatsApp y chatbot*/}
+      <WhatsappButton />
+      <ChatBot />
     </main>
   );
 }

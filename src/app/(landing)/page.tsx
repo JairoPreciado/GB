@@ -22,11 +22,11 @@ export default function HomePage() {
     <main className="pt-20">
       {/* Hero */}
       <AnimatedOnScroll>
-        <section className="w-full bg-gradient-to-b from-[#1656b7] to-[#bce6ff] py-20 text-center text-blue-950">
+        <section className="w-full bg-gradient-to-b from-[#1656b7] to-[#5fa8d3] py-20 text-center text-white">
           <h1 className="text-5xl font-bold mb-6">
             GB REPARACIÓN DE EQUIPOS DE CÓMPUTO
           </h1>
-          <p className="text-lg max-w-2xl mx-auto">
+          <p className="max-w-2xl mx-auto">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
             eiusmod tempor incididunt ut labore et dolore magna aliqua.
           </p>
@@ -117,6 +117,8 @@ export default function HomePage() {
           <Promociones />
         </section>
       </AnimatedOnScroll>
+
+      {/* Botón flotante de WhatsApp y chatbot*/}
       <WhatsappButton />
       <ChatBot />
     </main>
