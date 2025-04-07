@@ -4,7 +4,8 @@
 import { useState } from "react";
 import Link from "next/link"; // Para usar el componente Link de Next.js
 import AnimatedOnScroll from "@/components/AnimatedOnScroll";
-
+import WhatsappButton from "@/components/WhatsappButton";
+import ChatBot from "@/chatbot/components/ChatWidget"; // Importa tu componente de chatbot
 // ----------------------------------------------------------------------
 // Definición de los tipos
 // ----------------------------------------------------------------------
@@ -314,8 +315,8 @@ export default function ServicesPageClient() {
     <main className="pt-20">
       {/* Sección de encabezado */}
       <AnimatedOnScroll>
-        <section className="py-16 bg-gradient-to-r from-indigo-600 to-indigo-400 text-white text-center">
-          <h1 className="text-4xl font-bold mb-4">Nuestros Servicios</h1>
+        <section className="py-16 bg-gradient-to-b from-[#1656b7] to-[#5fa8d3] text-white text-center">
+          <h1 className="text-5xl font-bold mb-6">Nuestros Servicios</h1>
           <p className="max-w-2xl mx-auto">
             A continuación, encontrarás nuestras categorías de servicio. Cada
             una incluye subcategorías e ítems específicos. Haz clic en la
@@ -457,6 +458,10 @@ export default function ServicesPageClient() {
           </div>
         </div>
       )}
+
+      {/* Botón flotante de WhatsApp y chatbot*/}
+      <WhatsappButton /> 
+      <ChatBot />
     </main>
   );
 }
