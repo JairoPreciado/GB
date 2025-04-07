@@ -15,6 +15,7 @@ import Image from "next/image";
 import Link from "next/link";
 import AnimatedOnScroll from "@/components/AnimatedOnScroll";
 import WhatsappButton from "@/components/WhatsappButton";
+import ChatBot from "@/chatbot/components/ChatWidget"; // Importa tu componente de chatbot
 
 export default function ContactPage() {
   return (
@@ -264,8 +265,9 @@ export default function ContactPage() {
         </section>
       </AnimatedOnScroll>
 
-      {/* Botón flotante de WhatsApp */}
+      {/* Botón flotante de WhatsApp y chatbot*/}
       <WhatsappButton />
+      <ChatBot />
     </main>
   );
 }

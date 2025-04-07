@@ -3,6 +3,11 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import "./../../styles/globals.css";
 
+export const metadata = {
+  icons: {
+    icon: "/favicon.ico",
+  },
+};
 
 export default function LandingLayout({ children }: { children: React.ReactNode }) {
   return (
