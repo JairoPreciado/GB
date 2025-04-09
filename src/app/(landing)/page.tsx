@@ -16,6 +16,9 @@ import WhatsappButton from "@/components/WhatsappButton";
 import Promociones from "@/components/Promociones";
 import AnimatedOnScroll from "@/components/AnimatedOnScroll";
 import ChatBot from "@/chatbot/components/ChatWidget";
+import { servicios } from "@/app/(landing)/data"; // importa los datos
+import { i } from "framer-motion/client";
+import Link from "next/link";
 
 export default function HomePage() {
   return (
@@ -27,8 +30,8 @@ export default function HomePage() {
             GB REPARACIÓN DE EQUIPOS DE CÓMPUTO
           </h1>
           <p className="max-w-2xl mx-auto">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua.
+          Ofrecemos reparación de dispositivos, instalación y mantenimiento de redes, venta de equipos de cómputo
+           y puntos de venta, además de desarrollo de software personalizado para tu negocio.
           </p>
         </section>
       </AnimatedOnScroll>
@@ -47,36 +50,46 @@ export default function HomePage() {
             Descripción general
           </h2>
           <p className="max-w-3xl mx-auto text-gray-700">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-            aliquip ex ea commodo consequat.
+          GB Reparaciones ofrece soluciones integrales en tecnología, incluyendo reparación, instalación y 
+          mantenimiento de redes, así como venta de equipos de cómputo 
+          y puntos de venta para negocios. También nos especializamos en el desarrollo de software personalizado, 
+          siempre comprometidos con brindar un servicio rápido, profesional y de calidad a nuestros clientes en Colima.
           </p>
         </section>
       </AnimatedOnScroll>
 
       {/* Servicios */}
+      
       <AnimatedOnScroll>
+      <h3 className="text-indigo-600 font-bold text-center text-2xl mb-2">¿QUÉ HACEMOS?</h3>
         <section className="py-10 px-4 grid grid-cols-1 md:grid-cols-3 gap-6 max-w-6xl mx-auto">
-          {[1, 2, 3].map((num) => (
-            <div key={num} className="text-center">
-              <div className="bg-gray-300 rounded-lg h-40 mb-4"></div>
-              <h3 className="font-semibold mb-2">Servicio {num}</h3>
-              <p className="text-sm text-gray-600">
-                Lorem ipsum dolor amet, consectetur adipiscing elit. Malaesuada
-                gravida curabitur enim.
-              </p>
-            </div>
-          ))}
+        {servicios.map((servicio, index) => (
+            <div key={index} className="text-center">
+              <img
+              src={servicio.imagen}
+              alt={servicio.titulo}
+              className="w-full h-40 object-cover rounded-lg mb-4"
+              />
+              <h3 className="font-semibold mb-2">{servicio.titulo}</h3>
+              <p className="text-sm text-gray-600 mb-2">{servicio.descripcion}</p>
+              <ul className="list-disc pl-6 text-gray-700 text-left">
+              {servicio.lista.map((item, i) => (
+                <li key={i}>{item}</li>
+              ))}
+            </ul>
+          </div>
+            ))}     
         </section>
       </AnimatedOnScroll>
 
       {/* Botón CTA */}
       <AnimatedOnScroll>
         <div className="text-center py-6">
-          <button className="bg-[#1b234b] text-white font-semibold px-6 py-3 rounded-full">
-            MORE
+        <Link href="/services" className="block">
+        <button className="bg-[#1b234b] hover:bg-[#2c3a7a] text-white font-semibold px-6 py-3 rounded-full transition-colors duration-300">
+            Más sobre los Servicios
           </button>
+        </Link>
         </div>
       </AnimatedOnScroll>
 

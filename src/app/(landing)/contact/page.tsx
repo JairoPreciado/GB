@@ -27,7 +27,7 @@ export default function ContactPage() {
           {/* Imagen principal */}
           <div className="w-full h-[350px] relative rounded-3xl overflow-hidden shadow-xl">
             <Image
-              src="/assets/contact.jpg"
+              src="/assets/contacto.webp"
               alt="Persona contactando a servicio técnico"
               fill
               className="object-cover"
