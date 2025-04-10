@@ -5,7 +5,7 @@ import Link from "next/link";
 export default function WhatsappButton() {
   return (
     <Link
-      href="https://wa.me/5213121234567?text=Hola, estoy interesado en obtener más información sobre sus servicios.."
+      href="https://wa.me/523121457789?text=Hola, estoy interesado en obtener más información sobre sus servicios.."
       target="_blank"
       rel="noopener noreferrer"
       className="fixed bottom-6 right-6 z-50"
