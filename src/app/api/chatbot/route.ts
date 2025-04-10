@@ -23,7 +23,7 @@ export async function POST(req: Request) {
           { role: 'user', content: message },
         ],
         temperature: 0.7,
-        max_tokens: 500, // Límite razonable de respuesta
+        max_tokens: 300, // Límite razonable de respuesta
       }),
     })
 
