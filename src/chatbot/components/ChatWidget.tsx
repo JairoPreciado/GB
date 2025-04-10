@@ -180,6 +180,7 @@ export default function ChatWidget() {
           value={input}
           onChange={(e) => setInput(e.target.value)}
           onKeyDown={(e) => e.key === "Enter" && sendMessage()}
+          maxLength={100}
           style={{
             flex: 1,
             border: "1px solid #ccc",
