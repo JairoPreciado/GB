@@ -55,12 +55,15 @@ import AnimatedOnScroll from "@/components/AnimatedOnScroll";
 import ChatBot from "@/chatbot/components/ChatWidget";
 import Link from "next/link";
 import Image from "next/image";
-
-
+import RegistrarVisita from "@/components/RegistrarVisita";
 
 export default function HomePage() {
   return (
     <main className="pt-20">
+      
+      {/* Registrar visita */}
+      <RegistrarVisita />
+
       {/* Hero */}
       <AnimatedOnScroll>
         <section className="w-full bg-gradient-to-b from-[#1656b7] to-[#5fa8d3] py-20 text-center text-white">
