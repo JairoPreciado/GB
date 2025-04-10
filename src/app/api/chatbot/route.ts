@@ -10,7 +10,7 @@ export async function POST(req: Request) {
   }
 
   try {
-    const openaiRes = await fetch('https://google.com/v1/chat/completions', {
+    const openaiRes = await fetch('https://api.openai.com/v1/chat/completions', {
       method: 'POST',
       headers: {
         'Authorization': `Bearer ${apikey}`,
