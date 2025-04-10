@@ -16,9 +16,46 @@ import WhatsappButton from "@/components/WhatsappButton";
 import Promociones from "@/components/Promociones";
 import AnimatedOnScroll from "@/components/AnimatedOnScroll";
 import ChatBot from "@/chatbot/components/ChatWidget";
-import { servicios } from "@/app/(landing)/data"; // importa los datos
-import { i } from "framer-motion/client";
 import Link from "next/link";
+import Image from "next/image";
+
+export const servicios = [
+  {
+    titulo: "Reparación y Mantenimiento de Dispositivos Electrónicos",
+    descripcion:
+      "Ofrecemos servicios de reparación y mantenimiento para dispositivos electrónicos, asegurando su funcionamiento óptimo y prolongando su vida útil.",
+    lista: [
+      "Diagnóstico de dispositivos",
+      "Reparación de hardware",
+      "Mantenimiento preventivo",
+      "Actualización de software",
+    ],
+    imagen: "/assets/mantenimiento.jpg",
+  },
+  {
+    titulo: "Infraestructura y Redes",
+    descripcion:
+      "Ofrecemos diseño, instalación y soporte de redes cableadas e inalámbricas, asegurando un funcionamiento continuo, seguro y eficiente para hogares y negocios.",
+    lista: [
+      "Redes LAN, WiFi",
+      "Extensores de Red",
+      "Equipos de Punto a Punto",
+      "Cableado Estructurado"
+    ],
+    imagen: "/assets/redes.png",
+  },
+  {
+    titulo: "Desarrollo de Software y Venta de Equipos",
+    descripcion:
+      "Revisamos y reparamos impresoras para garantizar su funcionamiento continuo.",
+    lista: [
+      "Páginas Web",
+      "Sistemas de Punto de Venta para Restaurantes",
+      "Sistemas Personalizados",
+    ],
+    imagen: "/assets/software.jpg",
+  },
+];
 
 export default function HomePage() {
   return (
@@ -59,28 +96,30 @@ export default function HomePage() {
       </AnimatedOnScroll>
 
       {/* Servicios */}
-      
       <AnimatedOnScroll>
-      <h3 className="text-indigo-600 font-bold text-center text-2xl mb-2">¿QUÉ HACEMOS?</h3>
+        <h3 className="text-indigo-600 font-bold text-center text-2xl mb-2">¿QUÉ HACEMOS?</h3>
         <section className="py-10 px-4 grid grid-cols-1 md:grid-cols-3 gap-6 max-w-6xl mx-auto">
-        {servicios.map((servicio, index) => (
+          {servicios.map((servicio, index) => (
             <div key={index} className="text-center">
-              <img
-              src={servicio.imagen}
-              alt={servicio.titulo}
-              className="w-full h-40 object-cover rounded-lg mb-4"
+              <Image
+                src={servicio.imagen}
+                alt={servicio.titulo}
+                className="w-full h-40 object-cover rounded-lg mb-4"
+                width={400}
+                height={200}
               />
-              <h3 className="font-semibold mb-2">{servicio.titulo}</h3>
+              <h3 className="text-lg font-bold text-[#1b234b] mb-2">{servicio.titulo}</h3>
               <p className="text-sm text-gray-600 mb-2">{servicio.descripcion}</p>
               <ul className="list-disc pl-6 text-gray-700 text-left">
-              {servicio.lista.map((item, i) => (
-                <li key={i}>{item}</li>
-              ))}
-            </ul>
-          </div>
-            ))}     
+                {servicio.lista.map((item, i) => (
+                  <li key={i}>{item}</li>
+                ))}
+              </ul>
+            </div>
+          ))}
         </section>
       </AnimatedOnScroll>
+
 
       {/* Botón CTA */}
       <AnimatedOnScroll>
