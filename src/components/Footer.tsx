@@ -49,8 +49,8 @@ export default function Footer() {
         {/* Contacto */}
         <div>
           <h3 className="text-lg font-semibold mb-2">CONTÁCTANOS</h3>
-          <p className="text-sm">+52 312 123 4567</p>
-          <p className="text-sm">contacto@gbcolima.com</p>
+          <p className="text-sm">+52 312 145 7789</p>
+          <p className="text-sm">gb.soporte.online@gmail.com</p>
 
           <h4 className="mt-4 font-semibold">Horario</h4>
           <p className="text-sm">Lunes a Viernes de 8:00 am - 8:00pm</p>
@@ -58,7 +58,7 @@ export default function Footer() {
 
           <h4 className="mt-4 font-semibold">Envíanos un mensaje</h4>
           <Link
-            href="https://wa.me/5213121234567"
+            href="https://wa.me/523121457789"
             target="_blank"
             className="inline-block mt-2 bg-green-500 hover:bg-green-600 text-white font-semibold px-4 py-2 rounded-lg transition-colors"
           >
