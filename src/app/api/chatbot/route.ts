@@ -41,5 +41,3 @@ console.log('[OpenAI response]', data) // <-- AGREGA ESTO
     )
   }
 }
-
-export {} // <- Agrega esto al final de route.ts
