@@ -47,7 +47,7 @@ export const servicios = [
   {
     titulo: "Desarrollo de Software y Venta de Equipos",
     descripcion:
-      "Revisamos y reparamos impresoras para garantizar su funcionamiento continuo.",
+  "Creamos soluciones de software a medida y ofrecemos venta de equipos de cómputo adaptados a las necesidades de tu negocio.",
     lista: [
       "Páginas Web",
       "Sistemas de Punto de Venta para Restaurantes",
