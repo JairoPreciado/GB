@@ -10,16 +10,7 @@ export const metadata = {
     "Servicio técnico Colima",
   ],
 };
-
-import Carousel from "@/components/Carousel";
-import WhatsappButton from "@/components/WhatsappButton";
-import Promociones from "@/components/Promociones";
-import AnimatedOnScroll from "@/components/AnimatedOnScroll";
-import ChatBot from "@/chatbot/components/ChatWidget";
-import Link from "next/link";
-import Image from "next/image";
-
-export const servicios = [
+const servicios = [
   {
     titulo: "Reparación y Mantenimiento de Dispositivos Electrónicos",
     descripcion:
@@ -56,6 +47,16 @@ export const servicios = [
     imagen: "/assets/software.jpg",
   },
 ];
+
+import Carousel from "@/components/Carousel";
+import WhatsappButton from "@/components/WhatsappButton";
+import Promociones from "@/components/Promociones";
+import AnimatedOnScroll from "@/components/AnimatedOnScroll";
+import ChatBot from "@/chatbot/components/ChatWidget";
+import Link from "next/link";
+import Image from "next/image";
+
+
 
 export default function HomePage() {
   return (
