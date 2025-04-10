@@ -39,22 +39,22 @@ export default function Navbar() {
         `}>
           <li className="relative">
             <Link href="/" className="block hover:text-gray-200 transition after:content-[''] after:absolute after:left-0 after:bottom-0 after:w-0 after:h-[2px] after:bg-white after:transition-all after:duration-300 hover:after:w-full">
-              Home
+              Inicio
             </Link>
           </li>
           <li className="relative">
             <Link href="/services" className="block hover:text-gray-200 transition after:content-[''] after:absolute after:left-0 after:bottom-0 after:w-0 after:h-[2px] after:bg-white after:transition-all after:duration-300 hover:after:w-full">
-              Services
+              Servicios
             </Link>
           </li>
           <li className="relative">
             <Link href="/contact" className="block hover:text-gray-200 transition after:content-[''] after:absolute after:left-0 after:bottom-0 after:w-0 after:h-[2px] after:bg-white after:transition-all after:duration-300 hover:after:w-full">
-              Contact
+              Contacto
             </Link>
           </li>
           <li className="relative">
             <Link href="/about-us" className="block hover:text-gray-200 transition after:content-[''] after:absolute after:left-0 after:bottom-0 after:w-0 after:h-[2px] after:bg-white after:transition-all after:duration-300 hover:after:w-full">
-              About us
+              Acerca de
             </Link>
           </li>
         </ul>

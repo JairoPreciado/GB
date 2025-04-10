@@ -3,9 +3,11 @@ import { useState } from "react";
 import Image from "next/image";
 
 const images = [
-  "/assets/imagenx1.jpg",
-  "/assets/imagenx2.jpg",
-  "/assets/imagenx3.jpg",
+  "/assets/imagex1.jpg",
+  "/assets/imagex2.jpg",
+  "/assets/imagex4.jpg",
+  "/assets/imagex7.jpg",
+  "/assets/imagex9.jpg",
 ];
 
 export default function Carousel() {
