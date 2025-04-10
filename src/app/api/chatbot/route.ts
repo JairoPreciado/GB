@@ -4,9 +4,10 @@ import { systemPrompt } from '@/chatbot/utils/systemPrompt'
 export async function POST(req: Request) {
   const { message } = await req.json()
 
-  const apikey = "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"
-  if (!apikey) {
-    return NextResponse.json({ reply: 'API Key no configurada' }, { status: 500 })
+  const apikey = process.env.OPENAI_API_KEY
+
+  if (!apikey || !apikey.startsWith("sk-")) {
+    return NextResponse.json({ reply: 'API Key no configurada o inválida' }, { status: 500 })
   }
 
   try {
@@ -17,18 +18,18 @@ export async function POST(req: Request) {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        model: 'gpt-4o', // Más barato
+        model: 'gpt-4o',
         messages: [
           { role: 'system', content: systemPrompt },
           { role: 'user', content: message },
         ],
         temperature: 0.7,
-        max_tokens: 300, // Límite razonable de respuesta
+        max_tokens: 300,
       }),
     })
 
     const data = await openaiRes.json()
-console.log('[OpenAI response]', data) // <-- AGREGA ESTO
+    console.log('[OpenAI response]', JSON.stringify(data, null, 2))
 
     const reply = data.choices?.[0]?.message?.content || 'Sin respuesta.'
 
